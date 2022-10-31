@@ -3,8 +3,19 @@ let i = undefined;
 let latitude = screen.width;
 let longitude = screen.height;
 let centerCoords = undefined;
-let playercount = Math.floor(100 * Math.random());
+let playercount = Math.floor(10 * Math.random());
 let playerLocation = [];
+let getAverage=(arr, ARRvalue)=>{
+  getAverage=0
+  ARRvalue=eval(ARRvalue)
+  console.log(ARRvalue)
+  console.log(arr[0].ARRvalue
+)
+  for(i=0;i<arr.length;i++){
+getAverage=getAverage+arr[i].value
+  }
+  return getAverage/arr.length
+}
 playerLocation[0] = centerCoords;
 function generateRandomColor() {
   let letters = "0123456789ABCDEF";
@@ -60,22 +71,6 @@ let main = () => {
         `;
       }
     }
-    //     for (i = 1; i <= playercount; i++) {
-    //       document.querySelector(`#player${i}`).style = `
-    //       background-color:${generateRandomColor()};
-    //       position: fixed;
-    //       margin:1%;
-    //   height:1em;
-    //   aspect-ratio:1;
-    //   border-radius: 50%;
-    // left: ${Math.floor(
-    //         Math.sqrt(Math.pow(playerLocation[i].latitude, 2)) * scale.latitude
-    //       )}px;
-    // top: ${Math.floor(
-    //         Math.sqrt(Math.pow(playerLocation[i].longitude, 2)) * scale.longitude
-    //       )}px;
-    //       `;
-    //     }
     let u = 1;
     document.querySelectorAll(".playerDIV").forEach((player) => {
       player.style = `
@@ -94,6 +89,7 @@ let main = () => {
         `;
       u++;
     });
+    movement()
 
     localStorage.centerCoords
       ? localStorage.centerCoords
@@ -110,11 +106,14 @@ border-radius: 50%;
 
 };
 let movement=()=>{
-  movement=[]
+  console.clear()
+  let center= {}
+ let  movementDB=[]
   document.querySelectorAll(".playerDIV").forEach((player) => {
-
-
-  })
+    movementDB.push({x:player.getBoundingClientRect().x, 
+      y:player.getBoundingClientRect().y})
+    })
+      console.log(getAverage(movementDB,'x'))
 }
 </script>
 
@@ -133,7 +132,6 @@ let movement=()=>{
 @keyframes animatename{
   0%{
   opacity: 0;
-
   }
   50%{
     opacity: 1;
